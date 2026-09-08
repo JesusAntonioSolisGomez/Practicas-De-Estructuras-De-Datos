@@ -1,5 +1,6 @@
 # Practicas-De-Estructuras-De-Datos
-# Prácticas de Estructuras de Datos
+
+
 
 ## Descripción
 
