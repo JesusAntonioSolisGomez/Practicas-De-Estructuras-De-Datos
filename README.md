@@ -1,7 +1,6 @@
 # Practicas-De-Estructuras-De-Datos
 
 
-
 ## Descripción
 
 Este repositorio fue creado para almacenar y desarrollar las diferentes prácticas realizadas durante la materia de **Estructuras de Datos**.
