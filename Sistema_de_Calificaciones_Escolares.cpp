@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 
@@ -15,25 +16,60 @@ int main() {
 
         case 1: {
             string nombre;
-            float calificacion1, calificacion2, calificacion3;
+            int n;
+            float calificacion;
+            float suma = 0;
+            int aprobadas = 0;
+            int reprobadas = 0;
+            float mayor;
+            float menor;
 
-            cout << "Ingresa el nombre del estudiante: ";
+            cout << "\nIngresa el nombre del estudiante: ";
             cin >> nombre;
 
-            cout << "Ingresa la calificacion 1: ";
-            cin >> calificacion1;
+            cout << "Cuantas calificaciones deseas registrar? ";
+            cin >> n;
 
-            cout << "Ingresa la calificacion 2: ";
-            cin >> calificacion2;
+            if (n <= 0) {
+                cout << "La cantidad de calificaciones debe ser mayor que 0." << endl;
+                break;
+            }
 
-            cout << "Ingresa la calificacion 3: ";
-            cin >> calificacion3;
+            for (int i = 1; i <= n; i++) {
+                cout << "Ingresa la calificacion " << i << ": ";
+                cin >> calificacion;
 
-            float promedio = (calificacion1 + calificacion2 + calificacion3) / 3;
+                suma += calificacion;
+
+                if (calificacion >= 7) {
+                    aprobadas++;
+                } else {
+                    reprobadas++;
+                }
+
+                if (i == 1) {
+                    mayor = calificacion;
+                    menor = calificacion;
+                } else {
+                    if (calificacion > mayor) {
+                        mayor = calificacion;
+                    }
+
+                    if (calificacion < menor) {
+                        menor = calificacion;
+                    }
+                }
+            }
+
+            float promedio = suma / n;
 
             cout << "\n=== RESUMEN ===" << endl;
             cout << "Estudiante: " << nombre << endl;
             cout << "Promedio: " << promedio << endl;
+            cout << "Calificacion mas alta: " << mayor << endl;
+            cout << "Calificacion mas baja: " << menor << endl;
+            cout << "Calificaciones aprobatorias: " << aprobadas << endl;
+            cout << "Calificaciones reprobatorias: " << reprobadas << endl;
 
             break;
         }
@@ -55,5 +91,6 @@ int main() {
 
     return 0;
 }
+
 
         
