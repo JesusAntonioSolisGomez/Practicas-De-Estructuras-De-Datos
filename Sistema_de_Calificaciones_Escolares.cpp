@@ -16,6 +16,7 @@ int main() {
 
         case 1: {
             string nombre;
+            int edad;
             int n;
             float calificacion;
             float suma = 0;
@@ -26,6 +27,17 @@ int main() {
 
             cout << "\nIngresa el nombre del estudiante: ";
             cin >> nombre;
+            
+            cout<<"Ingresa la edad del estudiantes:";
+            cin >> edad;
+            
+            //Validacion de edad
+            
+            if(edad	<0 || edad > 120) {
+            	cout<<"Edad inavlida" << endl;
+            	return 1;
+            }
+            
 
             cout << "Cuantas calificaciones deseas registrar? ";
             cin >> n;
