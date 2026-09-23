@@ -5,105 +5,116 @@ using namespace std;
 int main() {
     int opcion;
 
-    cout << "=== SISTEMA DE CALIFICACIONES ===" << endl;
-    cout << "1. Registrar estudiante" << endl;
-    cout << "2. Ver informacion del programa" << endl;
-    cout << "3. Salir" << endl;
-    cout << "Opcion: ";
-    cin >> opcion;
+	// NIVEL 6 - do-while: valida la opcion del menu y permite
+    // volver a usar la opcion 1 (registrar otro estudiante) sin reiniciar
+    do{
+   		cout << "=== SISTEMA DE CALIFICACIONES ===" << endl;
+    	cout << "1. Registrar estudiante" << endl;
+    	cout << "2. Ver informacion del programa" << endl;
+    	cout << "3. Salir" << endl;
+    	cout << "Opcion: ";
+    	cin >> opcion;
+    	
+    	if(opcion < 1 || opcion > 3){
+    		cout << "\nOpcion no valida. Intenta de nuevo.\n" << endl;
+    		continue;
+    	}
 
-    switch (opcion) {
+    	switch (opcion) {
 
-        case 1: {
-            string nombre;
-            int edad;
-            int n;
-            float calificacion;
-            float suma = 0;
-            int aprobadas = 0;
-            int reprobadas = 0;
-            float mayor;
-            float menor;
+        	case 1: {
+            	string nombre;
+            	int edad;
+            	int n;
+            	float calificacion;
+            	float suma = 0;
+            	int aprobadas = 0;
+            	int reprobadas = 0;
+            	float mayor;
+            	float menor;
 
-            cout << "\nIngresa el nombre del estudiante: ";
-            cin >> nombre;
+            	cout << "\nIngresa el nombre del estudiante: ";
+            	cin >> nombre;
             
-            cout<<"Ingresa la edad del estudiantes:";
-            cin >> edad;
+            	cout<<"Ingresa la edad del estudiantes:";
+            	cin >> edad;
             
-             // NIVEL 5 - while: valida la edad hasta que sea correcta
-            while (edad < 0 || edad > 120) {
-                cout << "Edad invalida. Ingresa de nuevo (0-120): ";
-                cin >> edad;
-            }
+             	// NIVEL 5 - while: valida la edad hasta que sea correcta
+            	while (edad < 0 || edad > 120) {
+                	cout << "Edad invalida. Ingresa de nuevo (0-120): ";
+                	cin >> edad;
+            	}
 
-            cout << "Cuantas calificaciones deseas registrar? ";
-            cin >> n;
-            
-            // NIVEL 5 - while: valida que n sea mayor que 0
-            while (n<= 0) {
-            	cout << "Debe ser mayor que 0. Intenta de nuevo" ;
+            	cout << "Cuantas calificaciones deseas registrar? ";
             	cin >> n;
-            }
             
-            for (int i = 1; i <= n; i++) {
-            	cout << "ingresa la calificacion " << i << ":";
-                cin >> calificacion;
+            	// NIVEL 5 - while: valida que n sea mayor que 0
+            	while (n<= 0) {
+            		cout << "Debe ser mayor que 0. Intenta de nuevo" ;
+            		cin >> n;
+            	}
+            
+            	for (int i = 1; i <= n; i++) {
+            		cout << "ingresa la calificacion " << i << ":";
+                	cin >> calificacion;
                 
-                // NIVEL 5 - while: valida la calificacion (rango 0-10)
-                while (calificacion < 0 || calificacion > 10) {
-                    cout << "Calificacion invalida (0-10). Intenta de nuevo: ";
-                    cin >> calificacion;
-            }
+                	// NIVEL 5 - while: valida la calificacion (rango 0-10)
+                	while (calificacion < 0 || calificacion > 10) {
+                    	cout << "Calificacion invalida (0-10). Intenta de nuevo: ";
+                    	cin >> calificacion;
+            		}
             
-            suma += calificacion;
+            		suma += calificacion;
             
-            if (calificacion >= 7){
-            	aprobadas++;
-            } else {
-            	reprobadas++;
-            }
+            		if (calificacion >= 7){
+            			aprobadas++;
+            		} else {
+            			reprobadas++;
+            		}
             
-            if (i == 1) {
-            	mayor = calificacion;
-            	menor = calificacion;
-            } else {
-            	if (calificacion > mayor) {
-            		mayor = calificacion;
-				}
-				if (calificacion < menor){
-					menor = calificacion;
-				}
-            }
-        }
+            		if (i == 1) {
+            			mayor = calificacion;
+            			menor = calificacion;
+            		} else {
+            			if (calificacion > mayor) {
+            				mayor = calificacion;
+						}
+						if (calificacion < menor){
+							menor = calificacion;
+						}
+            		}
+        		}
         
-        float promedio = suma / n;
+        		float promedio = suma / n;
         
-        cout << "\n=== RESUMEN ===" << endl;
-            cout << "Estudiante: " << nombre << endl;
-            cout << "Promedio: " << promedio << endl;
-            cout << "Calificacion mas alta: " << mayor << endl;
-            cout << "Calificacion mas baja: " << menor << endl;
-            cout << "Calificaciones aprobatorias: " << aprobadas << endl;
-            cout << "Calificaciones reprobatorias: " << reprobadas << endl;
+        		cout << "\n=== RESUMEN ===" << endl;
+            	cout << "Estudiante: " << nombre << endl;
+            	cout << "Promedio: " << promedio << endl;
+            	cout << "Calificacion mas alta: " << mayor << endl;
+            	cout << "Calificacion mas baja: " << menor << endl;
+            	cout << "Calificaciones aprobatorias: " << aprobadas << endl;
+            	cout << "Calificaciones reprobatorias: " << reprobadas << endl;
+				cout << endl;
+				
+            	break;
+        	}
 
-            break;
-        }
+        	case 2:
+            	cout << "\n=== INFORMACION DEL PROGRAMA ===" << endl;
+            	cout << "Sistema para registrar estudiantes y calcular" << endl;
+            	cout << "el promedio de sus calificaciones." << endl;
+            	break;
 
-        case 2:
-            cout << "\n=== INFORMACION DEL PROGRAMA ===" << endl;
-            cout << "Sistema para registrar estudiantes y calcular" << endl;
-            cout << "el promedio de sus calificaciones." << endl;
-            break;
+        	case 3:
+            	cout << "\nSaliendo del programa..." << endl;
+            	break;
 
-        case 3:
-            cout << "\nSaliendo del programa..." << endl;
-            break;
-
-        default:
+        	default:
             cout << "\nOpcion no valida." << endl;
             break;
-    }
+    	}
+    
+	} while (opcion !=3);
 
     return 0;
 }
