@@ -1,5 +1,5 @@
-
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
@@ -31,51 +31,55 @@ int main() {
             cout<<"Ingresa la edad del estudiantes:";
             cin >> edad;
             
-            //Validacion de edad
-            
-            if(edad	<0 || edad > 120) {
-            	cout<<"Edad inavlida" << endl;
-            	return 1;
+             // NIVEL 5 - while: valida la edad hasta que sea correcta
+            while (edad < 0 || edad > 120) {
+                cout << "Edad invalida. Ingresa de nuevo (0-120): ";
+                cin >> edad;
             }
-            
 
             cout << "Cuantas calificaciones deseas registrar? ";
             cin >> n;
-
-            if (n <= 0) {
-                cout << "La cantidad de calificaciones debe ser mayor que 0." << endl;
-                break;
+            
+            // NIVEL 5 - while: valida que n sea mayor que 0
+            while (n<= 0) {
+            	cout << "Debe ser mayor que 0. Intenta de nuevo" ;
+            	cin >> n;
             }
-
+            
             for (int i = 1; i <= n; i++) {
-                cout << "Ingresa la calificacion " << i << ": ";
+            	cout << "ingresa la calificacion " << i << ":";
                 cin >> calificacion;
-
-                suma += calificacion;
-
-                if (calificacion >= 7) {
-                    aprobadas++;
-                } else {
-                    reprobadas++;
-                }
-
-                if (i == 1) {
-                    mayor = calificacion;
-                    menor = calificacion;
-                } else {
-                    if (calificacion > mayor) {
-                        mayor = calificacion;
-                    }
-
-                    if (calificacion < menor) {
-                        menor = calificacion;
-                    }
-                }
+                
+                // NIVEL 5 - while: valida la calificacion (rango 0-10)
+                while (calificacion < 0 || calificacion > 10) {
+                    cout << "Calificacion invalida (0-10). Intenta de nuevo: ";
+                    cin >> calificacion;
             }
-
-            float promedio = suma / n;
-
-            cout << "\n=== RESUMEN ===" << endl;
+            
+            suma += calificacion;
+            
+            if (calificacion >= 7){
+            	aprobadas++;
+            } else {
+            	reprobadas++;
+            }
+            
+            if (i == 1) {
+            	mayor = calificacion;
+            	menor = calificacion;
+            } else {
+            	if (calificacion > mayor) {
+            		mayor = calificacion;
+				}
+				if (calificacion < menor){
+					menor = calificacion;
+				}
+            }
+        }
+        
+        float promedio = suma / n;
+        
+        cout << "\n=== RESUMEN ===" << endl;
             cout << "Estudiante: " << nombre << endl;
             cout << "Promedio: " << promedio << endl;
             cout << "Calificacion mas alta: " << mayor << endl;
@@ -103,6 +107,5 @@ int main() {
 
     return 0;
 }
-
 
         
